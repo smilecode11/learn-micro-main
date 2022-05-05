@@ -1,26 +1,47 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="main-container">
+    <Header />
+    <el-main>
+      <Loading v-if="isLoading"/>
+      <div id="micro-container" v-else>
+        子应用内容
+      </div>
+    </el-main>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent, ref } from "vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import Loading from "./components/Loading.vue";
+export default defineComponent({
+  name: "App",
+  setup() {
+    const isLoading = ref(true);
 
-export default {
-  name: 'App',
+    setTimeout(() => (isLoading.value = false), 0);
+
+    return {
+      isLoading,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Footer,
+    Loading,
+  },
+});
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url("./assets/base.css");
+
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>

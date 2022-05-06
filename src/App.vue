@@ -2,29 +2,24 @@
   <div class="main-container">
     <Header />
     <el-main>
-      <Loading v-if="isLoading"/>
-      <div id="micro-container" v-else>
-        子应用内容
-      </div>
+      <Loading v-if="isLoading" />
+      <div id="micro-container" v-else>子应用内容</div>
     </el-main>
     <Footer />
   </div>
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Loading from "./components/Loading.vue";
+import { loading } from "./store/index";
 export default defineComponent({
   name: "App",
   setup() {
-    const isLoading = ref(true);
-
-    setTimeout(() => (isLoading.value = false), 0);
-
     return {
-      isLoading,
+      isLoading: loading.loadingRef,
     };
   },
   components: {

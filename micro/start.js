@@ -1,4 +1,5 @@
 import { setList, getList } from './const/subApps'
+import { setMainLifeCycle } from './const/lifeCycle'
 import { currentApp } from './utils'
 import { rewriteRouter } from './router/rewriteRouter'
 
@@ -6,8 +7,17 @@ import { rewriteRouter } from './router/rewriteRouter'
 rewriteRouter()
 
 /** 注册子应用*/
-export const registerMicroApps = (appList) => {
+export const registerMicroApps = (appList, lifeCycle) => {
     setList(appList)
+
+    //  主应用生命周期写入
+    setMainLifeCycle(lifeCycle)
+
+    lifeCycle.beforeMount[0]()
+
+    setTimeout(() => {
+        lifeCycle.mounted[0]()
+    }, (3000));
 }
 
 /** 启动微前端框架*/
@@ -23,7 +33,7 @@ export const start = () => {
     if (app) {
         const url = pathname + hash
         window.history.pushState('', '', url)
-        
+
         window.__CURRENT_SUB_APP__ = app.activeRoute
     }
 }

@@ -1,16 +1,27 @@
-import { createWebHashHistory, createRouter } from 'vue-router'
-import { NAV_LIST } from '../const/nav'
+import { createWebHistory, createRouter } from 'vue-router'
 
-let navRoutes = NAV_LIST.map(item => ({
-    path: item.url,
-    component: () => import('../App.vue')
-}))
+const routes = [
+    {
+        path: '/',
+        component: () => import('../App.vue'),
+    },
+    {
+        path: '/micro-vue3',
+        component: () => import('../App.vue'),
+    },
+    {
+        path: '/micro-vue2',
+        component: () => import('../App.vue'),
+    },
+    {
+        path: '/micro-react17',
+        component: () => import('../App.vue'),
+    }
+]
 
-const routes = [...navRoutes]
-
-const router = createRouter({
-    history: createWebHashHistory(),
-    routes
+const router = (basename = '') => createRouter({
+    history: createWebHistory(basename),
+    routes,
 })
 
 export default router

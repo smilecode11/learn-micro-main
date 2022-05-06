@@ -17,7 +17,7 @@
 
 <script>
 import { defineComponent, ref, watch } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { NAV_LIST } from "../const/nav";
 export default defineComponent({
   name: "HeaderContainer",

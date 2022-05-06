@@ -10,6 +10,6 @@ registerApp(subNavList) //  子应用注册
 
 const app = createApp(App)
 
-app.use(ElementPlus, { size: 'small', zIndex: 3000 })
-app.use(router)
+app.use(ElementPlus, { size: 'lagger', zIndex: 3000 })
+app.use(router())
 app.mount('#app')

@@ -1,3 +1,6 @@
+import { isTurnChild } from '../utils'
 export const turnApp = () => {
-    console.log("路由更新")
+    if (isTurnChild()) {
+        console.log("路由更新")
+    }
 }

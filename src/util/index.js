@@ -6,7 +6,7 @@ export const registerApp = (list) => {
 
     // 注册子应用到微前端框架
     registerMicroApps(list, {
-        beforeMount: [() => {
+        beforeLoad: [() => {
             console.log('主应用加载前')
             changeLoading(true)
         }],

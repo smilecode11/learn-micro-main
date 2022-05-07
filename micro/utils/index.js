@@ -31,11 +31,11 @@ export const isTurnChild = () => {
     window.__ORIGIN_SUB_APP__ = window.__CURRENT_SUB_APP__;
 
     const currentApp = window.location.pathname.match(/(\/[\w|-]+)/);
+    if (!currentApp) return
     if (window.__CURRENT_SUB_APP__ === currentApp[0]) {
         return false
     }
     //  子应用发生切换, 重新保存为当前子应用
-    if (!currentApp) return
     window.__CURRENT_SUB_APP__ = currentApp[0];
     return true
 }

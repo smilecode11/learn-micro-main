@@ -2,8 +2,8 @@
   <div class="main-container">
     <Header />
     <el-main>
-      <Loading v-if="isLoading" />
-      <div id="micro-container" v-else>子应用内容</div>
+      <Loading v-show="isLoading" />
+      <div id="micro-container" v-show="!isLoading">子应用内容</div>
     </el-main>
     <Footer />
   </div>

@@ -1,5 +1,7 @@
 import { getMainLifeCycle } from '../const/mainLifeCycle'
 import { findAppByRoute } from '../utils'
+import { loader } from '../loader'
+
 /** 微前端框架生命周期*/
 export const lifeCycle = async () => {
     //  获取上一个子应用
@@ -7,8 +9,6 @@ export const lifeCycle = async () => {
 
     //  获取即将跳转到的子应用
     let nextApp = findAppByRoute(window.__CURRENT_SUB_APP__)
-
-    console.log(prevApp, '-prevApp', nextApp, '-nextApp')
 
     // 没有匹配到下一个子应用, return
     if (!nextApp.name) return
@@ -30,9 +30,12 @@ export const lifeCycle = async () => {
 export const beforeLoad = async (app) => {
     await runMainLifeCycle('beforeLoad')
     app && app.beforeLoad && app.beforeLoad()
+    
+    let subApp = await loader(app)
+    subApp && subApp.beforeLoad && subApp.beforeLoad()
+    
     //  加载完成需要返回一个 app 上下文, 用于 mounted 内部使用
-    let appContext = null
-    return appContext
+    return subApp
 }
 
 /** 加载完成生命周期 - 子应用加载完成时, 主应用也会执行该生命周期*/

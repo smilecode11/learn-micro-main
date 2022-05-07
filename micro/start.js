@@ -32,8 +32,9 @@ export const start = () => {
     const { pathname, hash } = window.location
     if (app) {
         const url = pathname + hash
-        window.history.pushState('', '', url)
 
         window.__CURRENT_SUB_APP__ = app.activeRoute
+
+        window.history.pushState('', '', url)
     }
 }

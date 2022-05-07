@@ -1,11 +1,13 @@
 import { fetchReSource } from '../utils/fetchReSource'
+import { performScript/* performScriptForEval */ } from '../sandbox/performScript'
+
 /** 加载 html*/
 export const loader = async (app) => {
     let { entry, container } = app;
     // 子应用内容显示容器 - container
 
     //  子应用入口文件 - entry
-    const [dom, script] = await parseHtml(entry)
+    const [dom, scripts] = await parseHtml(entry)
 
     let ct = document.querySelector(container)
 
@@ -16,7 +18,8 @@ export const loader = async (app) => {
     //  容器内容重写
     ct.innerHTML = dom
 
-    console.log(dom, script, '-loader')
+    //  执行 js 脚本
+    scripts.forEach(item => performScript(item))
 
     return app
 }

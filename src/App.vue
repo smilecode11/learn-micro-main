@@ -39,4 +39,8 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 }
+
+.main-container /deep/ .el-main{
+  padding: 0;
+}
 </style>

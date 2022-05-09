@@ -27,15 +27,25 @@ const filterApp = (key, value) => {
 
 /** 判断子应用是否做了切换*/
 export const isTurnChild = () => {
+    const { pathname, hash } = window.location
+    const url = pathname + hash
+
+    const currentPrefix = url.match(/(\/[\w|-]+)/g)
+
+    if (currentPrefix && currentPrefix[0] === window.__CURRENT_SUB_APP__) {
+        return false
+    }
+
     //  保存上一个子应用
     window.__ORIGIN_SUB_APP__ = window.__CURRENT_SUB_APP__;
 
-    const currentApp = window.location.pathname.match(/(\/[\w|-]+)/);
-    if (!currentApp) return
-    if (window.__CURRENT_SUB_APP__ === currentApp[0]) {
-        return false
-    }
+    const currentSubApp = window.location.pathname.match(/(\/[\w|-]+)/);
+    if (!currentSubApp) return
+
+    // TODO: vue3 路由读取 location.pathname 待解决
+    // console.log(window.__CURRENT_SUB_APP__, '- isTurnChild')
+
     //  子应用发生切换, 重新保存为当前子应用
-    window.__CURRENT_SUB_APP__ = currentApp[0];
+    window.__CURRENT_SUB_APP__ = currentSubApp[0];
     return true
-}
+} 

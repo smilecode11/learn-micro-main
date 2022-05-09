@@ -12,12 +12,6 @@ export const registerMicroApps = (appList, lifeCycle) => {
 
     //  主应用生命周期写入
     setMainLifeCycle(lifeCycle)
-
-    // lifeCycle.beforeLoad[0]()
-
-    // setTimeout(() => {
-    //     lifeCycle.mounted[0]()
-    // }, (3000));
 }
 
 /** 启动微前端框架*/

@@ -1,5 +1,5 @@
 import { fetchReSource } from '../utils/fetchReSource'
-import { performScript/* performScriptForEval */ } from '../sandbox/performScript'
+import { sandBox } from '../sandbox'
 
 /** 加载 html*/
 export const loader = async (app) => {
@@ -19,7 +19,7 @@ export const loader = async (app) => {
     ct.innerHTML = dom
 
     //  执行 js 脚本
-    scripts.forEach(item => performScript(item))
+    scripts.forEach(item => sandBox(app, item))
 
     return app
 }

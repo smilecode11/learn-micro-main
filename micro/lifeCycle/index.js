@@ -16,7 +16,7 @@ export const lifeCycle = async () => {
     //  存在上一个子应用, 执行子应用的卸载
     if (prevApp.name && prevApp.unmount) {
         if (prevApp.proxy) {
-            prevApp.proxy.inActive()    //  沙箱销毁
+            prevApp.proxy.inactive()    //  沙箱销毁
         }
         await destoryed(prevApp)
     }

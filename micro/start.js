@@ -2,6 +2,15 @@ import { setList, getList } from './const/subApps'
 import { setMainLifeCycle } from './const/mainLifeCycle'
 import { currentApp } from './utils'
 import { rewriteRouter } from './router/rewriteRouter'
+import { Custom } from './customevent'
+
+//  微前端框架监听testevent事件, 并将其挂载 window 上
+const custom = new Custom()
+custom.on('testevent', (data) => {
+    console.log(data)
+})
+window.custom = custom;
+
 
 // 实现路由拦截
 rewriteRouter()

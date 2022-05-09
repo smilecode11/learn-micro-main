@@ -1,8 +1,8 @@
 <template>
-  <el-divider content-position="left">footer</el-divider>
-  <el-footer> 
-    Footer Content
-  </el-footer>
+  <div>
+    <el-divider content-position="left">footer</el-divider>
+    <el-footer> Footer Content </el-footer>
+  </div>
 </template>
 
 <script>

@@ -13,3 +13,8 @@
 * css modules, 子应用 webpack 配置打包 css 时添加 module 标识
 * shadow dom, 
 * minicss, 子应用 webpack 配置样式独立打包 MiniCssExtractPlugin
+* css-in-js
+
+### 应用通信
+* props
+* customevent

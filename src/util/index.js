@@ -7,15 +7,12 @@ export const registerApp = (list) => {
     // 注册子应用到微前端框架
     registerMicroApps(list, {
         beforeLoad: [() => {
-            console.log('主应用加载前')
             changeLoading(true)
         }],
         mounted: [() => {
-            console.log('主应用加载完成')
             changeLoading(false)
         }],
         destoryed: [() => {
-            console.log('主应用卸载')
         }]
     })
 

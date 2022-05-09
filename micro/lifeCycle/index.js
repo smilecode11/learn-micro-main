@@ -33,17 +33,20 @@ export const lifeCycle = async () => {
 export const beforeLoad = async (app) => {
     await runMainLifeCycle('beforeLoad')
     // app && app.bootstrap && app.bootstrap()
-    
+
     let subApp = await loader(app)
     subApp && subApp.bootstrap && subApp.bootstrap()
-    
+
     //  加载完成需要返回一个 app 上下文, 用于 mounted 内部使用
     return subApp
 }
 
 /** 加载完成生命周期 - 子应用加载完成时, 主应用也会执行该生命周期*/
 export const mounted = async (app) => {
-    app && app.mount && app.mount()
+    app && app.mount && app.mount({
+        entry: app.entry,
+        appInfo: app.appInfo
+    })
     await runMainLifeCycle('mounted')
 }
 

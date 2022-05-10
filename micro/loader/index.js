@@ -1,13 +1,14 @@
 import { fetchReSource } from '../utils/fetchReSource'
 import { sandBox } from '../sandbox'
 
+
 /** 加载 html*/
 export const loader = async (app) => {
     let { entry, container } = app;
     // 子应用内容显示容器 - container
 
     //  子应用入口文件 - entry
-    const [dom, scripts] = await parseHtml(entry)
+    const [dom, scripts] = await parseHtml(entry, app.name)
 
     let ct = document.querySelector(container)
 
@@ -24,8 +25,15 @@ export const loader = async (app) => {
     return app
 }
 
+//  缓存
+const cache = {}    //  根据应用名称来确定
+
 /** 解析子应用 html*/
-export const parseHtml = async (entry) => {
+export const parseHtml = async (entry, appName) => {
+    if (cache[appName]) {   //  读取缓存
+        return cache[appName]
+    }
+
     //  通过请求获取html -> fetch
     let html = await fetchReSource(entry)
 
@@ -42,6 +50,8 @@ export const parseHtml = async (entry) => {
     let fetchScripts = await Promise.all(scripUrl.map(async item => await fetchReSource(item)));
 
     allScripts = script.concat(fetchScripts)
+
+    cache[appName] = [dom, allScripts]  //  缓存赋值
 
     return [dom, allScripts];
 }

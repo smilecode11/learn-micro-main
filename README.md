@@ -20,3 +20,13 @@
 * customevent
   * 父子应用通信
   * 子应用之间通信, 需确定触发时间
+
+### 缓存子应用
+* cache
+### 预加载子应用
+
+### 通过 npm 发布 micro
+* npm 登录 npm login
+* 查看当前登录账号 npm whoame
+* 发布 npm publish
+* 取消发布 npm unpublish

@@ -1,4 +1,4 @@
-import { registerMicroApps, start, createStore } from '../../micro'
+import { registerMicroApps, start, createStore } from '@smiling_tests/micro-web-project-npm'
 import { changeLoading } from '../store/loading'
 
 const store = createStore()

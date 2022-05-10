@@ -26,7 +26,9 @@
 ### 预加载子应用
 
 ### 通过 npm 发布 micro
-* npm 登录 npm login
-* 查看当前登录账号 npm whoame
-* 发布 npm publish
-* 取消发布 npm unpublish
+* npm 登录 `npm login`
+* 查看当前登录账号 `npm whoami`
+* 发布 `npm publish`
+* 取消发布 `npm unpublish 包名@版本号`
+
+### 应用部署 - 创建自动部署平台

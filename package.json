@@ -11,6 +11,7 @@
     "@smiling_tests/micro-web-project-npm": "^1.0.0",
     "core-js": "^3.8.3",
     "element-plus": "^2.1.11",
+    "qiankun": "^2.7.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.13"
   },

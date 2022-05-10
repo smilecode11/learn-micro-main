@@ -3,6 +3,8 @@ import { setMainLifeCycle } from './const/mainLifeCycle'
 import { currentApp } from './utils'
 import { rewriteRouter } from './router/rewriteRouter'
 import { Custom } from './customevent'
+import { prefetch } from './loader/prefetch'
+
 
 //  微前端框架监听testevent事件, 并将其挂载 window 上
 const custom = new Custom()
@@ -40,4 +42,7 @@ export const start = () => {
 
         window.history.pushState('', '', url)
     }
+
+    //  预加载子应用
+    prefetch()
 }

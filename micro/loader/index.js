@@ -1,7 +1,6 @@
 import { fetchReSource } from '../utils/fetchReSource'
 import { sandBox } from '../sandbox'
 
-
 /** 加载 html*/
 export const loader = async (app) => {
     let { entry, container } = app;
